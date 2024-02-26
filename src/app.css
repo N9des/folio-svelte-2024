@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Humane';
+	src:
+		url('/fonts/humane/Humane-Bold.woff2') format('woff2'),
+		url('/fonts/humane/Humane-Bold.woff') format('woff');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Humane';
+	src:
+		url('/fonts/humane/Humane-Regular.woff2') format('woff2'),
+		url('/fonts/humane/Humane-Regular.woff') format('woff');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'PP Eiko';
+	src:
+		url('/fonts/pp-eiko/pp-eiko-regular.woff2') format('woff2'),
+		url('/fonts/pp-eiko/pp-eiko-regular.woff') format('woff');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'PP Eiko';
+	src:
+		url('/fonts/pp-eiko/pp-eiko-light-italic.woff2') format('woff2'),
+		url('/fonts/pp-eiko/pp-eiko-light-italic.woff') format('woff');
+	font-weight: 200;
+}
+
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+}
+
+* {
+	margin: 0;
+	padding: 0in;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+html.lenis {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+
+.anim {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	font-size: 24px;
+	padding: 0.5rem 1.4rem;
+}
+
+.caps {
+	display: flex;
+	flex-direction: row;
+	gap: 0.2rem;
+	background-color: #e4f99e;
+	padding: 1rem 0;
+	border-radius: 30px;
+	font-family: 'PP Eiko';
+	font-weight: 400;
+	color: #8684e4;
+	width: 195px;
+	overflow-x: hidden;
+	white-space: nowrap;
+	rotate: 20deg;
+}
+
+.caps > p {
+	display: inline-block;
+	animation: marquee 5s infinite linear;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
