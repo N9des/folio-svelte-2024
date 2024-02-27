@@ -20,7 +20,9 @@
 		document.addEventListener('loadedEvent', () => {
 			console.log('loadedEvent');
 
-			loading = false;
+			document.addEventListener('loadingFinished', () => {
+				loading = false;
+			});
 		});
 	});
 </script>

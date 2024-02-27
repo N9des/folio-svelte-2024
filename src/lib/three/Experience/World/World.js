@@ -51,16 +51,19 @@ export default class World {
 		this.contactTitle = new ContactTitle();
 		this.projectCard = new ProjectCard();
 		this.environment = new Environment();
-		this.scrollAnim = new ScrollAnim(
-			this.coverBalloons,
-			this.coverTitle,
-			this.workBalloons,
-			this.workTitle,
-			this.contactBalloons,
-			this.contactTitle,
-			this.projectCard,
-			this.transitionEnd
-		);
+
+		document.addEventListener('loadingFinished', () => {
+			this.scrollAnim = new ScrollAnim(
+				this.coverBalloons,
+				this.coverTitle,
+				this.workBalloons,
+				this.workTitle,
+				this.contactBalloons,
+				this.contactTitle,
+				this.projectCard,
+				this.transitionEnd
+			);
+		});
 
 		return Promise.resolve();
 	}
