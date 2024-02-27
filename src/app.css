@@ -2,42 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-family: 'Humane';
-	src:
-		url('/fonts/humane/Humane-Bold.woff2') format('woff2'),
-		url('/fonts/humane/Humane-Bold.woff') format('woff');
-	font-weight: 700;
-}
+@layer base {
+	@font-face {
+		font-family: 'Humane';
+		src:
+			url('/fonts/humane/Humane-Bold.woff') format('woff'),
+			url('/fonts/humane/Humane-Bold.woff2') format('woff2');
+		font-weight: 700;
+		font-style: normal;
+		font-display: block;
+	}
 
-@font-face {
-	font-family: 'Humane';
-	src:
-		url('/fonts/humane/Humane-Regular.woff2') format('woff2'),
-		url('/fonts/humane/Humane-Regular.woff') format('woff');
-	font-weight: 400;
-}
+	@font-face {
+		font-family: 'Humane';
+		src:
+			url('/fonts/humane/Humane-Regular.woff') format('woff'),
+			url('/fonts/humane/Humane-Regular.woff2') format('woff2');
+		font-weight: 400;
+		font-style: normal;
+		font-display: block;
+	}
 
-@font-face {
-	font-family: 'PP Eiko';
-	src:
-		url('/fonts/pp-eiko/pp-eiko-regular.woff2') format('woff2'),
-		url('/fonts/pp-eiko/pp-eiko-regular.woff') format('woff');
-	font-weight: 400;
-}
+	@font-face {
+		font-family: 'PP Eiko';
+		src:
+			url('/fonts/pp-eiko/pp-eiko-regular.woff') format('woff'),
+			url('/fonts/pp-eiko/pp-eiko-regular.woff2') format('woff2');
+		font-weight: 400;
+		font-style: normal;
+		font-display: block;
+	}
 
-@font-face {
-	font-family: 'PP Eiko';
-	src:
-		url('/fonts/pp-eiko/pp-eiko-light-italic.woff2') format('woff2'),
-		url('/fonts/pp-eiko/pp-eiko-light-italic.woff') format('woff');
-	font-weight: 200;
-}
-
-:root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+	@font-face {
+		font-family: 'PP Eiko';
+		src:
+			url('/fonts/pp-eiko/pp-eiko-light-italic.woff') format('woff'),
+			url('/fonts/pp-eiko/pp-eiko-light-italic.woff2') format('woff2');
+		font-weight: 200;
+		font-style: italic;
+		font-display: block;
+	}
 }
 
 * {
@@ -47,6 +51,10 @@
 
 body {
 	overflow-x: hidden;
+}
+
+h1 {
+	@apply font-heading text-secondary text-[10rem];
 }
 
 html.lenis {

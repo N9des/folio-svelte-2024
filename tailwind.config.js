@@ -3,8 +3,8 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
-			display: 'PP Eiko',
-			heading: 'Humane',
+			body: ['PP Eiko', 'serif'],
+			heading: ['Humane', 'sans-serif'],
 		},
 		extend: {
 			colors: {

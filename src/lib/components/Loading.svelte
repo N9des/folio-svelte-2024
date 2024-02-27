@@ -12,31 +12,36 @@
 					textContent: 0,
 				},
 				{
-					textContent: 75,
-					duration: 2.5,
-					ease: 'power4.out',
+					textContent: 100,
+					duration: 4,
+					ease: 'expo.inOut',
 					stagger: {
 						each: 1,
 						onUpdate: () => {
 							percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
 						},
 					},
-					onUpdate: () => {
-						document.addEventListener('loadedEvent', () => {
-							console.log('timeline');
-							gsap.to(percent, {
-								textContent: 100,
-								duration: 2.5,
-								ease: 'power4.out',
-								onUpdate: () => {
-									percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
-								},
-								onComplete: () => {
-									resolve();
-								},
-							});
-						});
+					onComplete: () => {
+						setTimeout(() => {
+							resolve();
+						}, 500);
 					},
+					// onUpdate: () => {
+					// 	document.addEventListener('loadedEvent', () => {
+					// 		console.log('timeline');
+					// 		gsap.to(percent, {
+					// 			textContent: 100,
+					// 			duration: 4,
+					// 			ease: 'expo.out',
+					// 			onUpdate: () => {
+					// 				percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
+					// 			},
+					// 			onComplete: () => {
+					// 				resolve();
+					// 			},
+					// 		});
+					// 	});
+					// },
 				}
 			);
 		});
@@ -54,6 +59,8 @@
 </script>
 
 <div class="bg-primary w-screen h-screen absolute inset-0 flex items-center justify-center z-10">
-	<h1 class="text-secondary text-[10rem] font-normal font-heading">Loading...</h1>
-	<p><span bind:this={percent}>0</span>%</p>
+	<h1 class="">Loading...</h1>
+	<div>
+		<p bind:this={percent}>0</p>
+	</div>
 </div>
