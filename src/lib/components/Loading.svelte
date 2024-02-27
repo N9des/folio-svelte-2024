@@ -4,49 +4,52 @@
 
 	let percent;
 
-	function progress() {
-		gsap.fromTo(
-			percent,
-			{
-				textContent: 0,
-			},
-			{
-				textContent: 75,
-				duration: 2.5,
-				ease: 'power4.out',
-				stagger: {
-					each: 1,
-					onUpdate: () => {
-						percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
+	async function progress() {
+		return new Promise((resolve) => {
+			gsap.fromTo(
+				percent,
+				{
+					textContent: 0,
+				},
+				{
+					textContent: 75,
+					duration: 2.5,
+					ease: 'power4.out',
+					stagger: {
+						each: 1,
+						onUpdate: () => {
+							percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
+						},
 					},
-				},
-				onUpdate: () => {
-					document.addEventListener('loadedEvent', () => {
-						console.log('timeline');
-						gsap.to(percent, {
-							textContent: 100,
-							duration: 2.5,
-							ease: 'power4.out',
-							onUpdate: () => {
-								percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
-							},
+					onUpdate: () => {
+						document.addEventListener('loadedEvent', () => {
+							console.log('timeline');
+							gsap.to(percent, {
+								textContent: 100,
+								duration: 2.5,
+								ease: 'power4.out',
+								onUpdate: () => {
+									percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
+								},
+								onComplete: () => {
+									resolve();
+								},
+							});
 						});
-					});
-				},
-			}
-		);
+					},
+				}
+			);
+		});
 	}
 
-	onMount(() => {
-		progress();
+	onMount(async () => {
+		await progress();
 
-		// setTimeout(() => {
-		// 	const event = new Event('loadingFinished');
-		// 	document.addEventListener('loadingFinished', () => {
-		// 		console.log('loadingFinished');
-		// 	});
-		// 	document.dispatchEvent(event);
-		// }, 3000);
+		const event = new Event('loadingFinished');
+		document.addEventListener('loadingFinished', () => {
+			console.log('loadingFinished');
+		});
+		document.dispatchEvent(event);
 	});
 </script>
 
