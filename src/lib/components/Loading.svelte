@@ -15,7 +15,6 @@
 				percent,
 				{
 					textContent: 0,
-					y: progressBar.offsetHeight,
 				},
 				{
 					textContent: 100,
@@ -84,14 +83,14 @@
 		class="flex flex-col gap-4 items-center justify-center"
 	>
 		<p
-			class="text-secondary"
+			class="text-secondary translate-y-[30dvh]"
 			bind:this={percent}
 		>
 			0
 		</p>
 		<div
 			bind:this={progressBar}
-			class=" h-[30dvh] overflow-hidden"
+			class="h-[30dvh] overflow-hidden"
 		>
 			<!-- <span
 				bind:this={progressBarInner}
