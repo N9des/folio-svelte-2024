@@ -2,17 +2,24 @@
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 
+	let progressContainer;
+	let progressBar;
+	let progressBarInner;
 	let percent;
 
 	async function progress() {
 		return new Promise((resolve) => {
-			gsap.fromTo(
+			const tl = gsap.timeline();
+
+			tl.fromTo(
 				percent,
 				{
 					textContent: 0,
+					y: progressBar.offsetHeight,
 				},
 				{
 					textContent: 100,
+					y: 0,
 					duration: 4,
 					ease: 'expo.inOut',
 					stagger: {
@@ -20,11 +27,6 @@
 						onUpdate: () => {
 							percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
 						},
-					},
-					onComplete: () => {
-						setTimeout(() => {
-							resolve();
-						}, 500);
 					},
 					// onUpdate: () => {
 					// 	document.addEventListener('loadedEvent', () => {
@@ -44,23 +46,77 @@
 					// },
 				}
 			);
+			tl.fromTo(
+				progressBarInner,
+				{ strokeDashoffset: -300 },
+				{
+					strokeDashoffset: 0,
+					duration: 4,
+					ease: 'expo.inOut',
+					onComplete: () => {
+						setTimeout(() => {
+							resolve();
+						}, 500);
+					},
+				},
+				'<'
+			);
 		});
 	}
 
 	onMount(async () => {
 		await progress();
 
-		const event = new Event('loadingFinished');
-		document.addEventListener('loadingFinished', () => {
-			console.log('loadingFinished');
-		});
-		document.dispatchEvent(event);
+		// const event = new Event('loadingFinished');
+		// document.addEventListener('loadingFinished', () => {
+		// 	console.log('loadingFinished');
+		// });
+		// document.dispatchEvent(event);
 	});
 </script>
 
-<div class="bg-primary w-screen h-screen absolute inset-0 flex items-center justify-center z-10">
-	<h1 class="">Loading...</h1>
-	<div>
-		<p bind:this={percent}>0</p>
+<div
+	class="bg-primary w-screen h-screen absolute inset-0 flex flex-col items-center pt-[30dvh] z-10"
+>
+	<h1>Loading...</h1>
+	<div
+		bind:this={progressContainer}
+		class="flex flex-col gap-4 items-center justify-center"
+	>
+		<p
+			class="text-secondary"
+			bind:this={percent}
+		>
+			0
+		</p>
+		<div
+			bind:this={progressBar}
+			class=" h-[30dvh] overflow-hidden"
+		>
+			<!-- <span
+				bind:this={progressBarInner}
+				class="block bg-secondary w-full h-full"
+			></span> -->
+
+			<svg
+				bind:this={progressBarInner}
+				class="w-full h-full"
+				viewBox="0 0 19 256"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M7.9997 0.5C7.9997 30.5 16.5005 51.5 17.5005 73C18.5005 94.5 0.500481 126.982 0.5 162C0.499479 200 7.9997 242 7.9997 255.5"
+					stroke="#DBF38C"
+				/>
+			</svg>
+		</div>
 	</div>
 </div>
+
+<style lang="postcss">
+	:global(svg) {
+		stroke-dasharray: 300;
+		stroke-dashoffset: -300;
+	}
+</style>
