@@ -4,7 +4,7 @@
 
 	// Video import
 	import video from '$lib/assets/videos/office.mp4';
-	import Loading from '$lib/components/Loading.svelte';
+	import Loading from '$lib/components/Loading/Loading.svelte';
 
 	/**
 	 * @type {HTMLCanvasElement}

@@ -1,11 +1,21 @@
 <script>
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
+	import Logo from './Logo.svelte';
 
 	let progressContainer;
 	let progressBar;
 	let progressBarInner;
 	let percent;
+
+	let logo;
+	let f;
+	let e;
+	let l;
+	let i;
+	let x;
+	let topRight;
+	let bottomLeft;
 
 	async function progress() {
 		return new Promise((resolve) => {
@@ -52,13 +62,34 @@
 					strokeDashoffset: 0,
 					duration: 4,
 					ease: 'expo.inOut',
+				},
+				'<'
+			);
+			tl.to(
+				[f, e, l, i, x],
+				{
+					y: 0,
+					x: 0,
+					rotate: 0,
+					duration: 3,
+					ease: 'elastic.out(1, 0.6)',
+				},
+				'<+=1.5'
+			);
+			tl.fromTo(
+				[topRight, bottomLeft],
+				{ strokeDashoffset: 300 },
+				{
+					strokeDashoffset: 0,
+					duration: 1,
+					ease: 'expo.in',
 					onComplete: () => {
 						setTimeout(() => {
 							resolve();
 						}, 500);
 					},
 				},
-				'<'
+				'<+=0.5'
 			);
 		});
 	}
@@ -77,7 +108,17 @@
 <div
 	class="bg-primary w-screen h-screen absolute inset-0 flex flex-col items-center pt-[30dvh] z-10"
 >
-	<h1>Loading...</h1>
+	<Logo
+		bind:logo
+		bind:f
+		bind:e
+		bind:l
+		bind:i
+		bind:x
+		bind:topRight
+		bind:bottomLeft
+	/>
+
 	<div
 		bind:this={progressContainer}
 		class="flex flex-col gap-4 items-center justify-center"
@@ -99,7 +140,7 @@
 
 			<svg
 				bind:this={progressBarInner}
-				class="w-full h-full"
+				class="w-full h-full progress"
 				viewBox="0 0 19 256"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +155,7 @@
 </div>
 
 <style lang="postcss">
-	:global(svg) {
+	:global(svg.progress) {
 		stroke-dasharray: 300;
 		stroke-dashoffset: -300;
 	}
