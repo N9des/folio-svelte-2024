@@ -55,11 +55,20 @@
 					// },
 				}
 			);
-			tl.fromTo(
+			// tl.fromTo(
+			// 	progressBarInner,
+			// 	{ strokeDashoffset: 300 },
+			// 	{
+			// 		strokeDashoffset: 0,
+			// 		duration: 4,
+			// 		ease: 'expo.inOut',
+			// 	},
+			// 	'<'
+			// );
+			tl.to(
 				progressBarInner,
-				{ strokeDashoffset: -300 },
 				{
-					strokeDashoffset: 0,
+					y: 0,
 					duration: 4,
 					ease: 'expo.inOut',
 				},
@@ -74,15 +83,15 @@
 					duration: 3,
 					ease: 'elastic.out(1, 0.6)',
 				},
-				'<+=1.5'
+				'<+=0.5'
 			);
 			tl.fromTo(
 				[topRight, bottomLeft],
 				{ strokeDashoffset: 300 },
 				{
 					strokeDashoffset: 0,
-					duration: 1,
-					ease: 'expo.in',
+					duration: 2,
+					ease: 'power4.inOut',
 					onComplete: () => {
 						setTimeout(() => {
 							resolve();
@@ -133,12 +142,12 @@
 			bind:this={progressBar}
 			class="h-[30dvh] overflow-hidden"
 		>
-			<!-- <span
+			<span
 				bind:this={progressBarInner}
-				class="block bg-secondary w-full h-full"
-			></span> -->
+				class="block bg-secondary w-[1px] h-full translate-y-[30dvh]"
+			></span>
 
-			<svg
+			<!-- <svg
 				bind:this={progressBarInner}
 				class="w-full h-full progress"
 				viewBox="0 0 19 256"
@@ -149,14 +158,14 @@
 					d="M7.9997 0.5C7.9997 30.5 16.5005 51.5 17.5005 73C18.5005 94.5 0.500481 126.982 0.5 162C0.499479 200 7.9997 242 7.9997 255.5"
 					stroke="#DBF38C"
 				/>
-			</svg>
+			</svg> -->
 		</div>
 	</div>
 </div>
 
 <style lang="postcss">
-	:global(svg.progress) {
+	/* :global(svg.progress) {
 		stroke-dasharray: 300;
 		stroke-dashoffset: -300;
-	}
+	} */
 </style>
