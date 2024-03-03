@@ -80,25 +80,25 @@
 					y: 0,
 					x: 0,
 					rotate: 0,
-					duration: 3,
-					ease: 'elastic.out(1, 0.6)',
+					duration: 4,
+					ease: 'expo.inOut',
 				},
-				'<+=0.5'
+				'<'
 			);
 			tl.fromTo(
 				[topRight, bottomLeft],
 				{ strokeDashoffset: 300 },
 				{
 					strokeDashoffset: 0,
-					duration: 2,
-					ease: 'power4.inOut',
+					duration: 4,
+					ease: 'expo.inOut',
 					onComplete: () => {
 						setTimeout(() => {
 							resolve();
 						}, 500);
 					},
 				},
-				'<+=0.5'
+				'<+=0.2'
 			);
 		});
 	}
