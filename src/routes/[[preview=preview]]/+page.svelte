@@ -4,6 +4,8 @@
 
 	// Video import
 	import video from '$lib/assets/videos/office.mp4';
+
+	// Components import
 	import Loading from '$lib/components/Loading/Loading.svelte';
 
 	/**
@@ -13,17 +15,16 @@
 	let exp;
 	let loading = true;
 
+	let hideLoading = () => {
+		loading = false;
+		document.removeEventListener('closeTransition', hideLoading);
+	};
+
 	onMount(async () => {
 		exp = new Experience();
 		await exp.init(webgl);
 
-		document.addEventListener('loadedEvent', () => {
-			console.log('loadedEvent');
-
-			document.addEventListener('loadingFinished', () => {
-				loading = false;
-			});
-		});
+		document.addEventListener('closeTransition', hideLoading);
 	});
 </script>
 

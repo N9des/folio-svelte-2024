@@ -52,20 +52,25 @@ export default class World {
 		this.projectCard = new ProjectCard();
 		this.environment = new Environment();
 
-		document.addEventListener('loadingFinished', () => {
-			this.scrollAnim = new ScrollAnim(
-				this.coverBalloons,
-				this.coverTitle,
-				this.workBalloons,
-				this.workTitle,
-				this.contactBalloons,
-				this.contactTitle,
-				this.projectCard,
-				this.transitionEnd
-			);
-		});
+		this.setScrollAnim = () => {
+			setTimeout(() => {
+				this.scrollAnim = new ScrollAnim(
+					this.coverBalloons,
+					this.coverTitle,
+					this.workBalloons,
+					this.workTitle,
+					this.contactBalloons,
+					this.contactTitle,
+					this.projectCard,
+					this.transitionEnd
+				);
+				return Promise.resolve();
+			}, 1500);
 
-		return Promise.resolve();
+			document.removeEventListener('closeTransition', this.setScrollAnim);
+		};
+
+		document.addEventListener('closeTransition', this.setScrollAnim);
 	}
 
 	update() {

@@ -77,6 +77,10 @@ html.lenis {
 	pointer-events: none;
 }
 
+.inactive {
+	@apply hidden pointer-events-none;
+}
+
 .anim {
 	position: absolute;
 	top: 0;

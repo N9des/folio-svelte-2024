@@ -55,16 +55,6 @@
 					// },
 				}
 			);
-			// tl.fromTo(
-			// 	progressBarInner,
-			// 	{ strokeDashoffset: 300 },
-			// 	{
-			// 		strokeDashoffset: 0,
-			// 		duration: 4,
-			// 		ease: 'expo.inOut',
-			// 	},
-			// 	'<'
-			// );
 			tl.to(
 				progressBarInner,
 				{
@@ -106,16 +96,16 @@
 	onMount(async () => {
 		await progress();
 
-		// const event = new Event('loadingFinished');
-		// document.addEventListener('loadingFinished', () => {
-		// 	console.log('loadingFinished');
-		// });
-		// document.dispatchEvent(event);
+		const event = new Event('loadingFinished');
+		document.addEventListener('loadingFinished', () => {
+			console.log('loadingFinished');
+		});
+		document.dispatchEvent(event);
 	});
 </script>
 
 <div
-	class="bg-primary w-screen h-screen absolute inset-0 flex flex-col items-center pt-[30dvh] z-10"
+	class="loading bg-primary w-screen h-screen absolute inset-0 flex flex-col items-center pt-[30dvh] z-10"
 >
 	<Logo
 		bind:logo
