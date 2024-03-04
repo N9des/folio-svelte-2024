@@ -73,7 +73,7 @@ export default class Transition {
 		this.displacementTexture = new THREE.TextureLoader().load(displacementImage);
 		this.cloud = new THREE.TextureLoader().load(cloud);
 
-		this.geometry = new THREE.PlaneGeometry(this.sizes.width * 2, this.sizes.height * 2, 1, 1);
+		this.geometry = new THREE.PlaneGeometry(1920, 1080, 1, 1);
 
 		console.log(this.geometry);
 
@@ -118,7 +118,7 @@ export default class Transition {
 			{ value: 0.75 },
 			{
 				value: 0.2,
-				duration: 2.5,
+				duration: 3,
 				ease: 'power4.inOut',
 				onComplete: () => {
 					if (this.firstLoading) {
@@ -136,7 +136,7 @@ export default class Transition {
 			{ value: 0.2 },
 			{
 				value: 0.75,
-				duration: 2.5,
+				duration: 3,
 				ease: 'power4.inOut',
 				onStart: () => {
 					this.dispatchEvent();
