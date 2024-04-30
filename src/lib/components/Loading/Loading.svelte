@@ -82,14 +82,32 @@
 					strokeDashoffset: 0,
 					duration: 4,
 					ease: 'expo.inOut',
-					onComplete: () => {
+					onStart: () => {
 						setTimeout(() => {
 							resolve();
-						}, 500);
+						}, 3500);
 					},
 				},
 				'<+=0.2'
 			);
+			tl.to(progressContainer, {
+				opacity: 0,
+				duration: 1,
+				ease: 'expo.inOut',
+			});
+			tl.to(
+				[topRight, bottomLeft],
+				{
+					opacity: 0,
+					duration: 1,
+					ease: 'expo.inOut',
+				},
+				'<'
+			);
+			tl.to(logo, {
+				yPercent: -300,
+				duration: 2,
+			});
 		});
 	}
 
