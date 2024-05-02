@@ -138,7 +138,7 @@
 
 	<div
 		bind:this={progressContainer}
-		class="flex flex-col gap-4 items-center justify-center"
+		class="flex flex-col gap-4 items-center justify-center mt-8 lg:mt-0"
 	>
 		<p
 			class="text-secondary translate-y-[30dvh]"

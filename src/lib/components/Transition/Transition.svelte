@@ -8,27 +8,27 @@
 	});
 </script>
 
-<div class="wrapper relative z-50 pointer-events-none h-full">
+<div class="wrapper absolute inset-0 z-50 pointer-events-none h-screen w-screen overflow-hidden">
 	<div class="clouds absolute inset-0 w-full h-[1585px]">
 		<img
 			src="images/transition/clouds_topRight.png"
 			alt=""
-			class="clouds__tr absolute inset-0 h-full w-full"
+			class="clouds__tr absolute inset-0 h-full w-full object-cover"
 		/>
 		<img
 			src="images/transition/clouds_topLeft.png"
 			alt=""
-			class="clouds__tl absolute inset-0 h-full w-full"
+			class="clouds__tl absolute inset-0 h-full w-full object-cover"
 		/>
 		<img
 			src="images/transition/clouds_bg.png"
 			alt=""
-			class="clouds__m absolute inset-0 h-full w-full"
+			class="clouds__m absolute inset-0 h-full w-full object-cover"
 		/>
 		<img
 			src="images/transition/clouds_bottom.png"
 			alt=""
-			class="clouds__b absolute inset-0 h-full w-full"
+			class="clouds__b absolute inset-0 h-full w-full object-cover"
 		/>
 	</div>
 </div>
