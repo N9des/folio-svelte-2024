@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import Transition from '$lib/three/Transition/main';
+	import Transition from '$lib/components/Transition/main';
 
 	onMount(async () => {
 		const transition = new Transition();

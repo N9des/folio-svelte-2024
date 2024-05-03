@@ -55,7 +55,8 @@ export default class Transition {
 	}
 
 	closeTransition() {
-		gsap.to(this.cloudsArray, {
+		const invertedArray = this.cloudsArray.reverse();
+		gsap.to(invertedArray, {
 			yPercent: -200,
 			stagger: 0.1,
 			duration: 3,
