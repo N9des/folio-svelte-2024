@@ -17,14 +17,13 @@ export const repositoryName = import.meta.env.VITE_PRISMIC_ENVIRONMENT || config
 // TODO: Update the routes array to match your project's route structure.
 const routes = [
 	{
-		type: 'page',
-		uid: 'home',
-		path: '/'
+		type: 'home',
+		path: '/',
 	},
 	{
-		type: 'page',
-		path: '/:uid'
-	}
+		type: 'project',
+		path: '/:uid',
+	},
 ];
 
 /**
@@ -36,7 +35,7 @@ const routes = [
 export const createClient = ({ cookies, ...config } = {}) => {
 	const client = prismic.createClient(repositoryName, {
 		routes,
-		...config
+		...config,
 	});
 
 	enableAutoPreviews({ client, cookies });
