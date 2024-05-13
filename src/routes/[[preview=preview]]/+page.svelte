@@ -8,6 +8,7 @@
 	import Desktop from '$lib/components/Home/Desktop.svelte';
 	import Mobile from '$lib/components/Home/Mobile.svelte';
 
+	export let data;
 	/**
 	 * @type {HTMLCanvasElement}
 	 */
@@ -40,6 +41,24 @@
 </script>
 
 <svelte:window on:innerWidth={() => (innerWidth = window.innerWidth)} />
+
+<svelte:head>
+	<title>{data.page.data.meta_title}</title>
+	{#if data.page.data.meta_description}
+		<meta
+			name="description"
+			content={data.page.data.meta_description}
+		/>
+		<meta
+			name="og:description"
+			content={data.page.data.meta_description}
+		/>
+		<meta
+			property="og:url"
+			content={data.page.data.meta_image.url}
+		/>
+	{/if}
+</svelte:head>
 
 {#if loading}
 	<Loading />
