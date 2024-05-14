@@ -5,6 +5,7 @@ export default {
 		fontFamily: {
 			body: ['PP Eiko', 'serif'],
 			heading: ['Humane', 'sans-serif'],
+			special: ['Sk Pupok', 'sans-serif'],
 		},
 		extend: {
 			colors: {
