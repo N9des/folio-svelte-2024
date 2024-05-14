@@ -21,7 +21,6 @@ export default class World {
 		this.transitionEnd = false;
 
 		// this.transition.on('transitionEnd', () => {
-		// 	console.log('end');
 		// 	this.transitionEnd = true;
 		// });
 
@@ -30,9 +29,7 @@ export default class World {
 
 			const event = new Event('loadedEvent');
 
-			document.addEventListener('loadedEvent', (e) => {
-				console.log('ok', e);
-			});
+			document.addEventListener('loadedEvent', () => {});
 
 			document.dispatchEvent(event);
 		});

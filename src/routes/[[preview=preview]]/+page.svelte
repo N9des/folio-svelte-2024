@@ -26,7 +26,8 @@
 	onMount(async () => {
 		isMobile = detect.isMobile();
 
-		console.log('isMobile', isMobile);
+		console.log(isMobile);
+
 		if (isMobile) {
 			setTimeout(() => {
 				document.addEventListener('closeTransition', hideLoading);
