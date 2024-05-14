@@ -44,6 +44,26 @@
 	}
 }
 
+:root {
+	--size: 375;
+
+	@screen md {
+		--size: 768;
+	}
+
+	@screen lg {
+		--size: 1024;
+	}
+
+	@screen xl {
+		--size: 1440;
+	}
+}
+
+html {
+	font-size: calc(10 * (100vw / var(--size)));
+}
+
 * {
 	margin: 0;
 	padding: 0in;

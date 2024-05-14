@@ -34,7 +34,9 @@
 					stagger: {
 						each: 1,
 						onUpdate: () => {
-							percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
+							if (gsap.getProperty(percent, 'textContent')) {
+								percent.textContent = Math.ceil(gsap.getProperty(percent, 'textContent'));
+							}
 						},
 					},
 					// onUpdate: () => {

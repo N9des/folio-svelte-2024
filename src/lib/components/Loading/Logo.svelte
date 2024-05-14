@@ -15,7 +15,7 @@
 >
 	<svg
 		viewBox="0 0 86 43"
-		class="bottom-left absolute bottom-[10%] left-[10%] max-w-16 lg:max-w-28"
+		class="bottom-left absolute bottom-[10%] left-[10%] max-w-24 lg:max-w-36"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 		bind:this={bottomLeft}
@@ -31,7 +31,7 @@
 
 	<svg
 		viewBox="0 0 93 62"
-		class="top-right absolute top-[10%] left-[85%] lg:w-28"
+		class="top-right absolute top-[10%] left-[85%] lg:w-36"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 		bind:this={topRight}
